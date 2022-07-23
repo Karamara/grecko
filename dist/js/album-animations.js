@@ -1,1 +1,106 @@
-var title1=document.querySelector("#title-1"),title2=document.querySelector("#title-2"),cardFood=document.querySelector("#card-food"),cardDesserts=document.querySelector("#card-desserts"),cardDrinks=document.querySelector("#card-drinks"),cardLocation=document.querySelector("#card-location"),cardStaff=document.querySelector("#card-staff"),newsletterForm=document.querySelector("#newsletter-form");title1.style.opacity="0",title2.style.opacity="0",cardFood.style.opacity="0",cardDesserts.style.opacity="0",cardDrinks.style.opacity="0",cardLocation.style.opacity="0",cardStaff.style.opacity="0",newsletterForm.style.opacity="0";var options={rootMargin:"0px",threshold:.2};function callback(e,t){e.forEach(function(e){switch(e.target.id){case"title-1":0<e.intersectionRatio&&(title1.style.opacity="1",title1.className+=" animated fadeInDown",t.unobserve(e.target));break;case"title-2":0<e.intersectionRatio&&(title2.style.opacity="1",title2.className+=" animated fadeInUp",t.unobserve(e.target));break;case"card-food":0<e.intersectionRatio&&(cardFood.style.opacity="1",cardFood.className+=" animated slideInUp",t.unobserve(e.target));break;case"card-desserts":0<e.intersectionRatio&&(cardDesserts.style.opacity="1",cardDesserts.className+=" animated slideInUp",t.unobserve(e.target));break;case"card-drinks":0<e.intersectionRatio&&(cardDrinks.style.opacity="1",cardDrinks.className+=" animated slideInUp",t.unobserve(e.target));break;case"card-location":0<e.intersectionRatio&&(cardLocation.style.opacity="1",cardLocation.className+=" animated slideInUp",t.unobserve(e.target));break;case"card-staff":0<e.intersectionRatio&&(cardStaff.style.opacity="1",cardStaff.className+=" animated slideInUp",t.unobserve(e.target));break;case"newsletter-form":0<e.intersectionRatio&&(newsletterForm.style.opacity="1",newsletterForm.className+=" animated fadeInUp",t.unobserve(e.target))}})}var observer=new IntersectionObserver(callback,options);observer.observe(title1),observer.observe(title2),observer.observe(cardFood),observer.observe(cardDesserts),observer.observe(cardDrinks),observer.observe(cardLocation),observer.observe(cardStaff),observer.observe(newsletterForm);
+/* Album page */
+var title1 = document.querySelector('#title-1');
+var title2 = document.querySelector('#title-2');
+var cardFood = document.querySelector('#card-food');
+var cardDesserts = document.querySelector('#card-desserts');
+var cardDrinks = document.querySelector('#card-drinks');
+var cardLocation = document.querySelector('#card-location');
+var cardStaff = document.querySelector('#card-staff');
+var newsletterForm = document.querySelector('#newsletter-form');
+title1.style.opacity = "0";
+title2.style.opacity = "0";
+cardFood.style.opacity = "0";
+cardDesserts.style.opacity = "0";
+cardDrinks.style.opacity = "0";
+cardLocation.style.opacity = "0";
+cardStaff.style.opacity = "0";
+newsletterForm.style.opacity = "0";
+
+var options = {
+  rootMargin: '0px',
+  threshold: 0.2
+}
+
+function callback(entries, observer) {
+  entries.forEach(function(entry) {
+    switch (entry.target.id) {
+      case "title-1":
+        if (entry.intersectionRatio > 0) {
+          title1.style.opacity = "1";
+          title1.className += " animated fadeInDown";
+          // Stop observing target
+          observer.unobserve(entry.target);
+        }
+        break;
+      case "title-2":
+        if (entry.intersectionRatio > 0) {
+          title2.style.opacity = "1";
+          title2.className += " animated fadeInUp";
+          // Stop observing target
+          observer.unobserve(entry.target);
+        }
+        break;
+      case "card-food":
+        if (entry.intersectionRatio > 0) {
+          cardFood.style.opacity = "1";
+          cardFood.className += " animated slideInUp";
+          // Stop observing target
+          observer.unobserve(entry.target);
+        }
+        break;
+      case "card-desserts":
+        if (entry.intersectionRatio > 0) {
+          cardDesserts.style.opacity = "1";
+          cardDesserts.className += " animated slideInUp";
+          // Stop observing target
+          observer.unobserve(entry.target);
+        }
+        break;
+      case "card-drinks":
+        if (entry.intersectionRatio > 0) {
+          cardDrinks.style.opacity = "1";
+          cardDrinks.className += " animated slideInUp";
+          // Stop observing target
+          observer.unobserve(entry.target);
+        }
+        break;
+      case "card-location":
+        if (entry.intersectionRatio > 0) {
+          cardLocation.style.opacity = "1";
+          cardLocation.className += " animated slideInUp";
+          // Stop observing target
+          observer.unobserve(entry.target);
+        }
+        break;
+      case "card-staff":
+        if (entry.intersectionRatio > 0) {
+          cardStaff.style.opacity = "1";
+          cardStaff.className += " animated slideInUp";
+          // Stop observing target
+          observer.unobserve(entry.target);
+        }
+        break;
+      case "newsletter-form":
+        if (entry.intersectionRatio > 0) {
+          newsletterForm.style.opacity = "1";
+          newsletterForm.className += " animated fadeInUp";
+          // Stop observing target
+          observer.unobserve(entry.target);
+        }
+        break;
+    }
+  });
+}
+
+// Create an intersection observer
+var observer = new IntersectionObserver(callback, options);
+
+// Start observing 
+observer.observe(title1);
+observer.observe(title2);
+observer.observe(cardFood);
+observer.observe(cardDesserts);
+observer.observe(cardDrinks);
+observer.observe(cardLocation);
+observer.observe(cardStaff);
+observer.observe(newsletterForm);

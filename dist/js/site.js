@@ -1,1 +1,41 @@
-!function(){document.querySelectorAll(".smooth-scroll").forEach(function(o){o.addEventListener("click",function(o){o.preventDefault(),document.querySelector(this.getAttribute("href")).scrollIntoView({behavior:"smooth",block:"start",inline:"start"})})});var o=$("#back-to-top");$(window).scroll(function(){2e3<$(this).scrollTop()?o.fadeIn(400):o.fadeOut(400)});var e=$("#googleMapContainer");e.click(function(){$(this).find("iframe").addClass("enable-zoom-scrolling")}),e.mouseleave(function(){$(this).find("iframe").removeClass("enable-zoom-scrolling")})}();
+(function() {
+
+  // Smooth scrolling
+  document.querySelectorAll('.smooth-scroll').forEach(function(anchor) {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+        inline: 'start'
+      });
+    });
+  });
+
+  // Back to top hide/show
+  var $backToTop = $('#back-to-top');
+
+  var offset = 2000;
+  var duration = 400;
+
+  $(window).scroll(function() {
+    if($(this).scrollTop() > offset) {
+      $backToTop.fadeIn(duration);
+    }
+    else {
+      $backToTop.fadeOut(duration);
+    }
+  });
+
+  // Disable mouse zoom scrolling on Google Map by default
+  var $googleMapContainer = $('#googleMapContainer');
+
+  $googleMapContainer.click(function() {
+    $(this).find('iframe').addClass('enable-zoom-scrolling');
+  });
+
+  $googleMapContainer.mouseleave(function() {
+    $(this).find('iframe').removeClass('enable-zoom-scrolling');
+  });
+
+})();
