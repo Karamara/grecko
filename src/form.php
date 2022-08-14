@@ -1,6 +1,10 @@
 
 
 <?php
+    ini_set('memory_limit', '1024M');
+
+use PHPMailer\PHPMailer\PHPMailer;
+require __DIR__ . '/form.php';
 
 $errors = [];
 $errorMessage = '';
@@ -28,30 +32,47 @@ if (!empty($_POST)) {
     }
 
     if (empty($inputNumber)) {
-      $errors[] = 'No is empty';
+      $errors[] = 'Numero is empty';
     }
  
     if (empty($inputPhone)) {
-        $errors[] = 'Message is empty';
+        $errors[] = 'No is empty';
     }
 
 
-    if (empty($errors)) {
-        $toEmail = 'amiryacin46@gmail.com';
-        $emailSubject = 'Nouveau reservation';
-        $headers = ['From' => $inputEmail, 'Reply-To' => $inputEmail, 'Content-type' => 'text/html; charset=iso-8859-1'];
-
-        $bodyParagraphs = ["Nom: {$inputName}", "Email: {$inputEmail}", "Date: {$inputDate}", "Personnes: {$inputNumber}", "No: {$inputPhone}", "Message: {$inputTextarea}"];
-        $body = join(PHP_EOL, $bodyParagraphs);
-
-        if (mail($toEmail, $emailSubject, $body, $headers)) {
-            header('Location: thank-you.html');
-        } else {
-            $errorMessage = 'Oops, something went wrong. Please try again later';
-        }
-    } else {
+    if (!empty($errors)) {
         $allErrors = join('<br/>', $errors);
         $errorMessage = "<p style='color: red;'>{$allErrors}</p>";
+    } else {
+        $mail = new PHPMailer();
+
+        // specify SMTP credentials
+        $mail->isSMTP();
+        $mail->Host = 'smtp.mailtrap.io';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'd5g6bc7a7dd6c7';
+        $mail->Password = '27f211b3fcad87';
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 2525;
+
+        $mail->setFrom($email, 'Mailtrap Website');
+        $mail->addAddress('piotr@mailtrap.io', 'Me');
+        $mail->Subject = 'Nouveau reservation';
+
+        // Enable HTML if needed
+        $mail->isHTML(true);
+
+        $bodyParagraphs = ["Nom: {$inputName}", "Email: {$inputEmail}", "Date: {$inputDate}", "Personnes: {$inputNumber}", "No: {$inputPhone}", "Message:", nl2br($inputTextarea)];
+        $body = join('<br />', $bodyParagraphs);
+        $mail->Body = $body;
+
+        echo $body;
+        if($mail->send()){
+
+            header('Location: thank-you.html'); // redirect to 'thank you' page
+        } else {
+            $errorMessage = 'Oops, something went wrong. Mailer Error: ' . $mail->ErrorInfo;
+        }
     }
 }
 
