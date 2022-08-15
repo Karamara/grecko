@@ -20,6 +20,9 @@
     <link rel="icon" href="./media/brand/eth1/ethiopia.svg" type="image/icon type">
   </head>
   <body id="top">
+
+
+
     <header>
       <!-- NAVBAR -->
       <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
@@ -61,6 +64,9 @@
         </div>
       </nav>
     </header>
+
+
+
     <main>
 
       <!-- COVER -->
@@ -164,6 +170,8 @@
             </div>
           </div>
 
+
+
           <div class="col-md-3 homepage-drinks">
             <h3 class="special-title-2" style="font-size: 2.5rem;">Boissons</h3>
             <div id="drinks">
@@ -178,6 +186,8 @@
               <a class="btn btn-outline-dark" href="./media/ethpic/c/boissons.jpeg" role="button">Afficher Le Menu</a>
             </div>
           </div>
+
+
 
           <div class="col-md-3 homepage-drinks">
             <h3 class="special-title-2" style="font-size: 2.5rem;">Alcool</h3>
@@ -242,6 +252,8 @@
         </div>
       </div>
 
+
+
       <!-- SPECIAL OFFERS -->
       <div class="homepage-special-offers container">
         <h2 class="special-title-1 text-center">Bienvenue en</h2>
@@ -249,6 +261,8 @@
         <div class="row">
           <div id="card-1" class="col-md-4">
             <div class="card-1 card box-shadow">
+
+              
               
               <div class="card-body">
                 <h5 class="card-title font-weight-bold">Plus vieux pays d'Afrique</h5>
@@ -260,6 +274,8 @@
           </div>
           <div id="card-2" class="col-md-4">
             <div class="card-2 card box-shadow">
+
+
               
               <div class="card-body">
                 <h5 class="card-title font-weight-bold"> Système horaire</h5>
@@ -406,89 +422,47 @@
                 src="https://res.cloudinary.com/pictureelement/image/upload/q_auto,f_auto,c_scale,w_2560/v1536179526/website-template-3/cover-reservations.jpg"
                 alt=""
                 class="reservations-form-bg">
-              <form method="POST" action="form.php" id="contact-form">
-                <h1 id="title-1" class="special-title-1 text-center">Réservations</h1>
-                <h2 id="title-2" class="special-title-2 text-center">Réserve Une Table</h2>
-                <div class="form-row">
-                  <div class="form-group col-md-6">
-                    <label for="inputName">NOM:</label>
-                    <input type="text" class="form-control" id="inputName" placeholder="Jean Louis">
-                  </div>
-                  <div class="form-group col-md-6">
-                    <label for="inputEmail">EMAIL:</label>
-                    <input type="email" class="form-control" id="inputEmail" placeholder="nom@exemple.com">
-                  </div>
+              <form
+                action="https://formspree.io/f/xwkzkrpn"
+                method="POST"
+              >
+              <h1 id="title-1" class="special-title-1 text-center">Réservations</h1>
+              <h2 id="title-2" class="special-title-2 text-center">Réserve Une Table</h2>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputName">NOM:</label>
+                  <input type="text" name="Nom" class="form-control" id="inputName" placeholder="Jean Louis" required>
                 </div>
-                <div class="form-row">
-                  <div class="form-group col-md-5">
-                    <label for="inputDate">DATE:</label>
-                    <input type="date" class="form-control" id="inputDate">
-                  </div>
-                  <div class="form-group col-md-2">
-                    <label for="inputNumber">PERSONNES:</label>
-                    <input type="number" min="1" class="form-control" id="inputNumber" placeholder="1">
-                  </div>
-                  <div class="form-group col-md-5">
-                    <label for="inputPhone">NUMERO:</label>
-                    <input type="tel" class="form-control" id="inputPhone" placeholder="06 99 12 34 56">
-                  </div>
+                <div class="form-group col-md-6">
+                  <label for="inputEmail">EMAIL:</label>
+                  <input type="email" name="Email" class="form-control" id="inputEmail" placeholder="nom@exemple.com" required>
                 </div>
-                <div class="form-group">
-                  <label for="inputTextarea">MESSAGE:</label>
-                  <textarea class="form-control" id="inputTextarea" rows="7" placeholder="......"></textarea>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-3">
+                  <label for="inputDate">DATE:</label>
+                  <input type="date" name="Date" class="form-control" id="inputDate" required>
                 </div>
-                <button type="submit" class="btn btn-light">ENVOYER</button>
+                <div class="form-group col-md-3">
+                  <label for="inputTime">HEURE:</label>
+                  <input type="time" name="Heure" class="form-control" id="inputTime" required>
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="inputNumber">PERSONNES:</label>
+                  <input type="number" name="Personne(es)" min="1" class="form-control" id="inputNumber" placeholder="1" required>
+                </div>
+                <div class="form-group col-md-4">
+                  <label for="inputPhone">NUMERO:</label>
+                  <input type="tel" name="Numero" class="form-control" id="inputPhone" placeholder="06 99 12 34 56" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputTextarea">MESSAGE:</label>
+                <textarea class="form-control" name="Message" id="inputTextarea" rows="7" placeholder="......"></textarea>
+              </div>
+              <button type="submit" class="btn btn-light">ENVOYER</button>
               </form>
             </div>
-            <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
-            <script>
-              const constraints = {
-                inputName: {
-                      presence: { allowEmpty: false }
-                  },
-                  inputEmail: {
-                      presence: { allowEmpty: false },
-                      email: true
-                  },
-                  inputDate: {
-                      presence: { allowEmpty: false }
-                  },
-                  inputNumber: {
-                      presence: { allowEmpty: false }
-                  },
-                  inputPhone: {
-                      presence: { allowEmpty: false }
-                  },
-                  inputTextarea: {
-                      presence: { allowEmpty: false }
-                  }
-              };
-           
-              const form = document.getElementById('contact-form');
-           
-              form.addEventListener('submit', function (event) {
-                const formValues = {
-                    inputName: form.elements.inputName.value,
-                    inputEmail: form.elements.inputEmail.value,
-                    inputDate: form.elements.inputDate.value,
-                    inputNumber: form.elements.inputNumber.value,
-                    inputPhone: form.elements.inputPhone.value,
-                    inputTextarea: form.elements.inputTextarea.value
-                };
-           
-                const errors = validate(formValues, constraints);
-           
-                if (errors) {
-                  event.preventDefault();
-                  const errorMessage = Object
-                      .values(errors)
-                      .map(function (fieldValues) { return fieldValues.join(', ')})
-                      .join("\n");
-           
-                  alert(errorMessage);
-                }
-              }, false);
-           </script>
 
 
       <!-- GOOGLE MAP -->
